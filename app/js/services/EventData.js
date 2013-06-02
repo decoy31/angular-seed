@@ -1,6 +1,8 @@
 'use strict';
 
-eventsApp.factory('eventData', function ($http, $q) {
+eventsApp.factory('eventData', function ($q, $resource) {
+    var eventResource = $resource('/data/event/:id', {id: '@id'});
+
     return {
         /**
          * Gets the stored event.
@@ -10,19 +12,27 @@ eventsApp.factory('eventData', function ($http, $q) {
         getEvent: function (id) {
             var deferred = $q.defer();
 
-            $http({
-                method: 'GET',
-                url: '/data/event/' + id
-            })
-                .success(function (data, status, headers, config) {
-                    //$log.info(data, status, headers(), config);
-                    deferred.resolve(data);
-                })
-                .error(function (data, status, headers, config) {
-                    //$log.warn(data, status, headers(), config);
-                    deferred.reject(status);
+            eventResource.get({id: id},
+                function (event) {
+                    deferred.resolve(event);
+                },
+                function (response) {
+                    deferred.reject(response);
                 });
 
+            return deferred.promise;
+        },
+        save: function (event) {
+            var deferred = $q.defer();
+            event.id = 999;
+            eventResource.save(event,
+                function (response) {
+                    deferred.resolve(response);
+                },
+                function (response) {
+                    deferred.reject(response);
+                }
+            );
             return deferred.promise;
         }
     };

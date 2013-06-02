@@ -22,9 +22,10 @@
 
     <div ng-controller="EditEventController" style="padding-left:20px; padding-right:20px">
         <div class="container">
-            <h1>New Event</h1>
+            <h1 ng-hide="editingEvent">New Event</h1>
+            <h1 ng-show="editingEvent">Edit Event</h1>
             <hr/>
-            <form name="newEventForm">
+            <form name="editEventForm">
                 <fieldset>
                     <label for="eventName">Event Name:</label>
                     <input id="eventName" type="text" required ng-model="event.name" placeholder="Name of your event..." />
@@ -45,7 +46,7 @@
                 <br/>
                 <br/>
 
-                <button type="submit" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, newEventForm)" class="btn btn-primary">Save</button>
+                <button type="submit" ng-disabled="newEventForm.$invalid" ng-click="saveEvent(event, editEventForm)" class="btn btn-primary">Save</button>
                 <button type="button" ng-click="cancelEdit()" class="btn btn-default">Cancel</button>
             </form>
         </div>
@@ -58,9 +59,11 @@
 <script src="lib/angular/angular.min.js"></script>-->
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular/angular-sanitize.js"></script>
+<script src="lib/angular/angular-resource.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/EventController.js"></script>
 <script src="js/controllers/EditEventController.js"></script>
+<script src="js/services/EventData.js"></script>
 <script src="js/filters.js"></script>
 </body>
 </html>
