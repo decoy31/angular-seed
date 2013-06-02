@@ -1,24 +1,6 @@
-<!doctype html>
-<html lang="en" ng-app="eventsApp">
-<head>
-    <meta charset="utf-8">
-    <title>Event Registration</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body ng-cloak>
-<div class="container">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <ul class="nav">
-                <li><a href="#/NewEvent.html">Create Event</a></li>
-            </ul>
-        </div>
-    </div>
-    <div ng-controller="EventController" style="padding-left:20px; padding-right:20px">
+<div style="padding-left:20px; padding-right:20px">
+    <div id="me">
         <img ng-src="{{event.imageUrl}}" alt="{{event.name}}" src=""/>
-        <button type="button" class="btn btn-primary" ng-click="scrollToSession()">Scroll</button>
-
         <div class="row">
             <div class="span11">
                 <h2>{{event.name | uppercase}}</h2>
@@ -76,6 +58,7 @@
                         <span>Duration: <span class="{{session.duration | durations:'class'}} icon-white"
                                               title="{{session.duration | durations:'title'}}"></span></span><br/>
                         <span>Level: {{session.level}}</span>
+
                         <p>{{session.abstract}}</p>
                     </div>
                 </div>
@@ -83,17 +66,3 @@
         </ul>
     </div>
 </div>
-<script src="lib/jquery/jquery-2.0.2.min.js"></script>
-<script src="lib/underscore/underscore-1.4.4.min.js"></script>
-<script src="lib/bootstrap/bootstrap.min.js"></script>
-<!-- add for production
-<script src="lib/angular/angular.min.js"></script>-->
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-sanitize.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controllers/EventController.js"></script>
-<script src="js/services/EventData.js"></script>
-<script src="js/filters.js"></script>
-</body>
-</html>

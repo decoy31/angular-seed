@@ -1,18 +1,19 @@
 'use strict';
 
 eventsApp.factory('eventData', function ($q, $resource) {
-    var eventResource = $resource('/data/event/:id', {id: '@id'});
+    var resource = $resource('/data/event/:id', {id: '@id'});
 
     return {
         /**
          * Gets the stored event.
          *
+         * @param {number} eventId Event ID.
          * @returns {promise} Returns a promise object.
          */
-        getEvent: function (id) {
+        getEvent: function (eventId) {
             var deferred = $q.defer();
 
-            eventResource.get({id: id},
+            resource.get({id: eventId},
                 function (event) {
                     deferred.resolve(event);
                 },
@@ -25,7 +26,7 @@ eventsApp.factory('eventData', function ($q, $resource) {
         save: function (event) {
             var deferred = $q.defer();
             event.id = 999;
-            eventResource.save(event,
+            resource.save(event,
                 function (response) {
                     deferred.resolve(response);
                 },
@@ -34,6 +35,9 @@ eventsApp.factory('eventData', function ($q, $resource) {
                 }
             );
             return deferred.promise;
+        },
+        getAllEvents: function () {
+            return resource.query();
         }
     };
 });

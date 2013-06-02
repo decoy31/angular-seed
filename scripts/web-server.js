@@ -223,7 +223,7 @@ StaticServlet.prototype.sendRedirect_ = function (req, res, redirectUrl) {
 
 StaticServlet.prototype.sendDefault_ = function (req, res) {
     var self = this;
-    var path = './index.html'
+    var path = './index.html';
 
     var file = fs.createReadStream(path);
     res.writeHead(200, {
@@ -265,7 +265,7 @@ StaticServlet.prototype.sendFile_ = function (req, res, path) {
 
 StaticServlet.prototype.sendAllJsonFilesAppended_ = function (req, res, path) {
     var self = this;
-    var files = []
+    var files = [];
     try {
         files = fs.readdirSync(path);
     }
@@ -348,13 +348,15 @@ StaticServlet.prototype.sendDirectory_ = function (req, res, path) {
         var remaining = files.length;
         files.forEach(function (fileName, index) {
             fs.stat(path + '/' + fileName, function (err, stat) {
-                if (err)
+                if (err) {
                     return self.sendError_(req, res, err);
+                }
                 if (stat.isDirectory()) {
                     files[index] = fileName + '/';
                 }
-                if (!(--remaining))
+                if (!(--remaining)) {
                     return self.writeDirectoryIndex_(req, res, path, files);
+                }
             });
         });
     });
