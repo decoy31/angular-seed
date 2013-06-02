@@ -7,5 +7,8 @@ eventsApp.controller('LocaleSampleController',
         $scope.myDate = Date.now();
         $scope.myFormat = $locale.DATETIME_FORMATS.fullDate;
 
+        // Test throwing an exception and having it handled
+        // by the ExceptionHandler service.
+        //throw { message: 'error message' };
     }
 );
