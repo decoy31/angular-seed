@@ -1,16 +1,21 @@
 /* app css stylesheet */
 body {
-    background-color: #52575c;
-    color: white;
+    background-color: #252930;
+    color: #c4c9cf;
+}
+
+hr {
+    border-color: #12161d;
 }
 
 .navbar-inner {
-    background-color: #52575c;
-    background-image: -moz-linear-gradient(top, #F2F2F2, #52575c);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F2F2F2), to(#52575c));
-    background-image: -webkit-linear-gradient(top, #F2F2F2, #52575c);
-    background-image: -o-linear-gradient(top, #F2F2F2, #52575c);
-    background-image: linear-gradient(to bottom, #F2F2F2, #52575c);
+    border: solid 2px #12161d;
+    background-color: #383c43;
+    background-image: -moz-linear-gradient(top, #4e5359, #383c43);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4e5359), to(#383c43));
+    background-image: -webkit-linear-gradient(top, #4e5359, #383c43);
+    background-image: -o-linear-gradient(top, #4e5359, #383c43);
+    background-image: linear-gradient(to bottom, #4e5359, #383c43);
 }
 
 .hoverwell:hover {
@@ -22,8 +27,13 @@ select, textarea {
     color: #52575c;
 }
 
+.well {
+    background-color: #1e2229;
+    border: solid 2px #12161d;
+}
+
 .well-title {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .session {
@@ -43,4 +53,12 @@ select, textarea {
 .votingButton {
     padding-left: 6px;
     cursor: pointer;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none;
+}
+
+.blue {
+    color: blue;
 }
